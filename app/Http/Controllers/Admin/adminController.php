@@ -10,7 +10,7 @@ class adminController extends Controller
 {
     public function registroAdm(Request $req, User $user)
     {
-        $userAdm = $req->only('name', 'email', 'password');
+        $userAdm = $req->only('name', 'email', 'password', 'rua', 'cidade', 'estado', 'telefone');
         $userAdm['password'] = bcrypt($userAdm['password']);
         if(!$user = $user->create($userAdm))
         abort(500, 'Error 404');

@@ -21,6 +21,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'rua',
+        'cidade',
+        'estado',
+        'telefone'
     ];
 
     /**
@@ -41,6 +45,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
+ 
+    public function pedidoID()
+    {
+        return $this->hasMany(Pedido::class, 'user_id');
+    }
     
 }
