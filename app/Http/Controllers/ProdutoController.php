@@ -22,6 +22,7 @@ class ProdutoController extends Controller
         $produtos->nome = $request->nome;
         $produtos->descricao = $request->descricao;
         $produtos->preco = $request->preco;
+        $produtos->categoria = $request->categoria;
         if($request->hasFile('imagem') && $request->file('imagem')->isValid()){
             $requestImg = $request->imagem;
             $extencao = $requestImg->extension();

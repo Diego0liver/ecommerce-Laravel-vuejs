@@ -1,12 +1,6 @@
 <template>
-    <nav class="nav">
-        <img class="logoTipo" src="../../../public/img/logos/logo.png" alt="logo">
-        <input class="busca" type="text" />
-        <router-link to="/card">
-         <button class="carrinho">Carrinho !</button>
-        </router-link>
-    </nav>
     <div>
+        <Cabecalho />
         <ul class="opcoes">
             <li class="listaOpcoes">PC's</li>
             <li class="listaOpcoes">NoteBook's</li>
@@ -15,10 +9,12 @@
     </div>
     <div class="cardItem">
     <ul class="card" v-for="prod in data" :key="prod.id">
+        <RouterLink :to="'/produtoid/' + prod.id">
         <img class="imgProduto" :src="`http://127.0.0.1:8000/img/produtos/${prod.imagem}`" alt="Imagem" />
         <li class="nomeProduto">{{ prod.nome }}</li>
         <li class="precoProduto">R$ {{ prod.preco }}</li>
         <li class="desProduto">10% de desconto no PIX</li>
+       </RouterLink >
     </ul>
     </div>
 </template>
@@ -26,7 +22,13 @@
 
 <script>
 import { mapState, mapActions } from 'vuex';
+import Cabecalho from '../components/Cabecalho.vue'
+import { RouterLink } from 'vue-router';
 export default{
+    components:{
+    Cabecalho,
+    RouterLink
+},
     methods:{
         ...mapActions(['getProdutos']),
     },
@@ -40,14 +42,11 @@ export default{
 </script>
 
 <style scoped>
-   .nav{
-    background-color: #ff7f00;
-    display: flex;
-    justify-content: space-between;
-   }
    .cardItem{
     display: flex;
     justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin: 10px;
    }
    .card{
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -83,20 +82,6 @@ export default{
     color: darkgrey;
     margin-top: 5px;
     margin-left: 10px;
-   }
-   .logoTipo{
-    width: 120px;
-    height: 120px;
-    border-radius: 100%;
-    margin: 10px;
-   }
-   .busca{
-    margin-top: 50px;
-    height: 20px;
-    width: 200px;
-   }
-   .carrinho{
-    margin: 10px;
    }
    .opcoes{
       display: flex;

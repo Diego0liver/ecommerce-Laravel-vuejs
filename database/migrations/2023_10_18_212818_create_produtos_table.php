@@ -17,8 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('nome');
             $table->string('descricao');
+            $table->enum('categoria', ['NoteBook', 'Pc', 'Acessorios']);
             $table->string('imagem');
-            $table->decimal('preco');
+            $table->decimal('preco', 10, 2);
             $table->timestamps();
         });
     }
