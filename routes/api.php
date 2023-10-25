@@ -13,6 +13,7 @@ Route::prefix('auth')->group(function(){
 
 Route::get('/produtos', [ProdutoController::class, 'index']);
 
+Route::get('/categoria/{categoria}', [ProdutoController::class, 'getAcess']);
 Route::post('/produtos', [ProdutoController::class, 'store']);
 Route::get('/produtos/{id}', [ProdutoController::class, 'show']);
 Route::delete('/produtos/{id}', [ProdutoController::class, 'delet']);

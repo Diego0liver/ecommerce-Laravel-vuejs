@@ -19,6 +19,24 @@ const router = createRouter({
       name: 'produtoid',
       component: ()=> import ('../view/ProdutoID.vue'),
       props: true
+    },
+    {
+      path: '/categoria/pc',
+      name: 'categoriapc',
+      component: ()=> import ('../view/CategoriaPc.vue'),
+      props: true
+    },
+    {
+      path: '/categoria/notebook',
+      name: 'categoriaNote',
+      component: ()=> import ('../view/CategoriaNote.vue'),
+      props: true
+    },
+    {
+      path: '/categoria/acessorios',
+      name: 'categoriaAcess',
+      component: ()=> import ('../view/CategoriaAcess.vue'),
+      props: true
     }
   ]
 })

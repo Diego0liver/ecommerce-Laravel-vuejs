@@ -1,41 +1,52 @@
 <template>
     <div>
         <Cabecalho />
-       <CategoriasOpc />
+        <CategoriasOpc />
     </div>
     <div class="cardItem">
-    <ul class="card" v-for="prod in data" :key="prod.id">
+    <ul class="card" v-for="prod in dados" :key="prod.id">
         <RouterLink :to="'/produtoid/' + prod.id">
         <img class="imgProduto" :src="`http://127.0.0.1:8000/img/produtos/${prod.imagem}`" alt="Imagem" />
         <li class="nomeProduto">{{ prod.nome }}</li>
         <li class="precoProduto">R$ {{ prod.preco }}</li>
         <li class="desProduto">10% de desconto no PIX</li>
-       </RouterLink >
+       </RouterLink>
     </ul>
     </div>
 </template>
 
 
 <script>
-import { mapState, mapActions } from 'vuex';
-import Cabecalho from '@/components/cabecalho.vue'
+import Cabecalho from '@/components/Cabecalho.vue'
 import CategoriasOpc from '@/components/CategoriasOpc.vue'
 import { RouterLink } from 'vue-router';
+import api from '../http/api';
 export default{
     components:{
     Cabecalho,
     CategoriasOpc,
     RouterLink
 },
-    methods:{
-        ...mapActions(['getProdutos']),
-    },
-    mounted(){
-       this.getProdutos();
-    },
-    computed:{
-          ...mapState(['data'])
+data() {
+     return {
+      dados:{}
     }
+  },
+methods: {
+  fetchData() {
+    api.get('/categoria/acessorios')
+    .then(response => {
+        this.dados = response.data.categoria}
+        )
+      .catch(error => {
+        // Lide com erros aqui
+        console.error(error);
+      });
+  }
+},
+mounted() {
+  this.fetchData();
+}
 }
 </script>
 
@@ -81,5 +92,4 @@ export default{
     margin-top: 5px;
     margin-left: 10px;
    }
- 
 </style>

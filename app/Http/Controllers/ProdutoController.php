@@ -13,6 +13,16 @@ class ProdutoController extends Controller
        $getAllProdutos = Produto::all();
        return $getAllProdutos;
     }
+    
+    public function getAcess($categoria)
+    {
+        $getCategoria = Produto::where("categoria", $categoria)->get();
+        if($getCategoria->isEmpty()){
+            return response()->jason(['message' => 'Nenhum produto encontrado para a categoria especificada'], 404);
+        }else{
+            return response()->json(['categoria' => $getCategoria], 200);
+        }
+    }
 
     //adicionar novo produto
     public function store(Request $request)
