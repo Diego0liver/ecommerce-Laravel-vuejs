@@ -33,4 +33,10 @@ class adminController extends Controller
              'id'=>$id
         ]);
     }
+
+    public function cliente(string $id)
+    {
+        $getIdCliente = User::find($id);
+        return $getIdCliente;
+    }
 }

@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../view/Home.vue'
+import auth from  '../services/index'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -12,7 +13,8 @@ const router = createRouter({
     {
       path: '/card',
       name: 'carrinho',
-      component: () => import ('../view/Carrinho.vue')
+      component: () => import ('../view/Carrinho.vue'),
+      beforeEnter: auth.auth
     },
     {
       path: '/produtoid/:id',
@@ -36,6 +38,12 @@ const router = createRouter({
       path: '/categoria/acessorios',
       name: 'categoriaAcess',
       component: ()=> import ('../view/CategoriaAcess.vue'),
+      props: true
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: ()=> import ('../view/Login.vue'),
       props: true
     }
   ]
