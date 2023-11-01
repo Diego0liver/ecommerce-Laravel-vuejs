@@ -50,5 +50,5 @@ class User extends Authenticatable
     {
         return $this->hasMany(Pedido::class, 'user_id');
     }
-    
+  
 }

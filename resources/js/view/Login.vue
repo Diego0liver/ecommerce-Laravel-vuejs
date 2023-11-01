@@ -7,17 +7,22 @@
     <label class="label">Password:</label>
     <input class="input" v-model="password" type="password" name="password"/>
     <button class="btnLog" type="submit">Logar</button>
+    <RouterLink to="/reg">
+        <p>Cadastro</p>
+    </RouterLink>
     </form>
 </template>
 
 <script>
 import api from '@/http/api'
 import Cabecalho from '@/components/Cabecalho.vue'
+import { RouterLink } from 'vue-router';
 export default{
  name:'login',
  components:{
-    Cabecalho
- },
+    Cabecalho,
+    RouterLink
+},
  data() {
     return {
         email: '',
@@ -26,7 +31,7 @@ export default{
  },
  methods:{
     logar(){
-        api.post('/auth/loginAdmin', {email: this.email, password: this.password})
+    api.post('/auth/loginAdmin', {email: this.email, password: this.password})
     .then(response => {
         const tokenSalvo = response.data.token
         const idAuth = response.data.id

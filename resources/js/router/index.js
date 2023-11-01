@@ -17,6 +17,12 @@ const router = createRouter({
       beforeEnter: auth.auth
     },
     {
+      path: '/cliente',
+      name: 'cliente',
+      component: () => import ('../view/Cliente.vue'),
+      beforeEnter: auth.auth
+    },
+    {
       path: '/produtoid/:id',
       name: 'produtoid',
       component: ()=> import ('../view/ProdutoID.vue'),
@@ -44,6 +50,13 @@ const router = createRouter({
       path: '/login',
       name: 'login',
       component: ()=> import ('../view/Login.vue'),
+      props: true
+    }
+    ,
+    {
+      path: '/reg',
+      name: 'registro',
+      component: ()=> import ('../view/Registro.vue'),
       props: true
     }
   ]

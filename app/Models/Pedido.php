@@ -20,4 +20,12 @@ class Pedido extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function produto()
+    {
+        return $this->belongsToMany(Produto::class, 'produto_id');
+    }
+    public function produt()
+    {
+        return $this->belongsToMany(Produto::class, 'pedido_produto');
+    }
 }

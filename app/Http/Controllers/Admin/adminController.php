@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Pedido;
 use Illuminate\Http\Request;
 
 class adminController extends Controller
@@ -14,12 +15,12 @@ class adminController extends Controller
         $userAdm['password'] = bcrypt($userAdm['password']);
         if(!$user = $user->create($userAdm))
         abort(500, 'Error 404');
-
-        return response()->json([
-           'data'=>[
-              'user' => $user
-           ]
-        ]);
+       else{
+        return
+           Pedido::create($req->all()) &&
+           $user &&
+           Pedido::where('id', $user->id)->update(['user_id' => $user->id]);
+        };
     }
 
      public function loginAdmin(Request $req)

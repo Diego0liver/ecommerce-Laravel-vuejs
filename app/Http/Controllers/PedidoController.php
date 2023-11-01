@@ -14,17 +14,17 @@ class PedidoController extends Controller
         return $novoPedido;
     }
 
-   
-    public function show($id)
+   //pedido pelo ID do pedido
+   public function show(string $id)
     {
-        $getIdPedido = Pedido::find($id);
-        if($getIdPedido){
-          
+        $getIdMesa = Pedido::find($id);
+        if($getIdMesa){
+           //pegando o testamento com os livros pela n:1
            $response = [
-              'Pedido' => $getIdPedido,
-              'Cliente'=> $getIdPedido->user
+              'Pedido' => $getIdMesa,
+              'Produtos'=> $getIdMesa->produt
            ];
-            return $getIdPedido;
+            return $response;
           }
           return response()->json([
              'message' => 'Algo deu errado :('
@@ -44,6 +44,7 @@ class PedidoController extends Controller
         return $deletaPedido;
     }
 
+    //pedido pelo ID do usuario
     public function pedidoID($id)
     {
         $getID = Pedido::where('user_id', $id)->get();

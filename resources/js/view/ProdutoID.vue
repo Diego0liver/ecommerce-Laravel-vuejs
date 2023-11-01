@@ -13,7 +13,7 @@
       <p class="desconto">10% de desconto no PIX</p>
       <p class="desconto">Frete GRATIS acima de 200R$</p>
       <p class="descricao">{{ dados.descricao }}</p>
-      <button class="btn">Adicionar ao carrinho</button>
+      <button @click="addCart" class="btn">Adicionar ao carrinho</button>
      </div>
     </div>
    </div>
@@ -22,6 +22,7 @@
 <script>
 import Cabecalho from '../components/Cabecalho.vue'
 import api from '../http/api'
+const IDcart = localStorage.getItem('userID');
 export default {
     name: 'produtoid',
     components:{
@@ -42,6 +43,16 @@ export default {
     } catch (error) {
       console.error( error);
     }
+  },
+  methods:{
+    addCart(){
+    api.post('/produtos/cart', {pedido_id: IDcart, produto_id: this.id})
+    .then(response => {
+      console.log(response.data)})
+      .catch(error => {
+        console.error(error);
+      });
+  }
   }
   }
 </script>

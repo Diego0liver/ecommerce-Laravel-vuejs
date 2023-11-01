@@ -9,7 +9,9 @@
     <input class="busca" type="text" />
     </div>
     <div>
-      <img class="carrinho" src="../../../public/img/logos/user.png" alt="cart">
+    <RouterLink to="/cliente">
+      <img class="carrinho" src="../../../public/img/logos/user.png" alt="user">
+    </RouterLink>  
     <RouterLink to="/card">
       <img class="carrinho" src="../../../public/img/logos/cart.png" alt="cart">
     </RouterLink>
