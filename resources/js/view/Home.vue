@@ -4,7 +4,7 @@
        <CategoriasOpc />
     </div>
     <div class="cardItem">
-    <ul class="card" v-for="prod in data" :key="prod.id">
+    <ul class="card" v-for="prod in produtos" :key="prod.id">
         <RouterLink :to="'/produtoid/' + prod.id">
         <img class="imgProduto" :src="`http://127.0.0.1:8000/img/produtos/${prod.imagem}`" alt="Imagem" />
         <li class="nomeProduto">{{ prod.nome }}</li>
@@ -34,7 +34,7 @@ export default{
        this.getProdutos();
     },
     computed:{
-          ...mapState(['data'])
+          ...mapState(['produtos'])
     }
 }
 </script>

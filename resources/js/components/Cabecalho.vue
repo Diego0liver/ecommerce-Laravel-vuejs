@@ -8,16 +8,36 @@
     <h1 class="title">Tec Stoom</h1>
     <input class="busca" type="text" />
     </div>
-    <div>
+    
+    <div class="nav">
     <RouterLink to="/cliente">
-      <img class="carrinho" src="../../../public/img/logos/user.png" alt="user">
+      <img class="user" src="../../../public/img/logos/user.png" alt="user">
     </RouterLink>  
     <RouterLink to="/card">
+      <div class="cartNav">
       <img class="carrinho" src="../../../public/img/logos/cart.png" alt="cart">
+      <p class="numberCart">{{ pedidos.length }}</p>
+    </div>
     </RouterLink>
    </div>
 </nav>
 </template>
+
+<script>
+import { mapState, mapActions } from 'vuex';
+
+export default{
+  methods:{
+  ...mapActions(['getCart']),
+},
+mounted(){
+  this.getCart();
+},
+computed:{
+    ...mapState(['pedidos'])
+}
+}
+</script>
 
 <style scoped>
   .title{
@@ -34,6 +54,20 @@
     display: flex;
     justify-content: space-between;
    }
+   .cartNav{
+    display: flex;
+    margin: 30px;
+   }
+   .numberCart{
+   background-color: #d36a02;
+   width: 20px;
+   height: 20px;
+   text-align: center;
+   color: #fff;
+   font-weight: bold;
+   border-radius: 50%;
+   margin-left: -15px;
+   }
    .logoTipo{
     width: 120px;
     height: 120px;
@@ -45,11 +79,18 @@
     width: 200px;
    }
    .carrinho{
-    margin: 30px;
     background-color: white;
     border-radius: 100%;
     padding: 10px;
     width: 40px;
     height: 40px;
+   }
+   .user{
+    background-color: white;
+    border-radius: 100%;
+    padding: 10px;
+    width: 40px;
+    height: 40px;
+    margin-top: 30px;
    }
 </style>
