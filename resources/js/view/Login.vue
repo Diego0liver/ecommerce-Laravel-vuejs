@@ -37,7 +37,8 @@ export default{
         const idAuth = response.data.id
         localStorage.setItem('authToken', tokenSalvo)
         localStorage.setItem('userID', idAuth)
-        this.$router.push('/card')})
+        this.$router.push('/')
+    })
       .catch(error => {
         console.error(error);
       });
