@@ -31,11 +31,19 @@ class PedidoProdutoController extends Controller
 
     public function update(Request $request, $id)
     {
-        // Método para atualizar um produto no banco de dados.
+
     }
 
-    public function destroy($id)
+    public function destroy(string $pedido_id, string $produto_id)
     {
-        // Método para excluir um produto do banco de dados.
+        $pedidos = PedidoProduto::where('pedido_id', $pedido_id)->first();
+        $produtos = PedidoProduto::where('produto_id', $produto_id)->first();
+
+        if ($pedidos && $produtos) {
+            $produtos->delete();
+            return response()->json(['message' => 'Registro excluído com sucesso']);
+        } else {
+            return dd($produtos);
+        }
     }
 }

@@ -9,7 +9,7 @@
           <li class="nome">{{ ped.nome }}</li>
           <li class="preco">R$ {{ ped.preco }}</li>
           </div>
-          <li class="remov">Remover</li>
+          <li @click="remove(ped.id)" class="remov">Remover</li>
       </ul>
     </div>
 
@@ -35,6 +35,10 @@ export default {
     components: {Cabecalho},
     methods:{
       ...mapActions(['getCart']),
+      
+    remove(id){
+      console.log(id)
+    }
 },
 mounted(){
   this.getCart();
@@ -43,8 +47,8 @@ computed:{
   totalPreco() {
     return this.pedidos.reduce((total, ped) => total + parseFloat(ped.preco), 0);
     },
-    ...mapState(['pedidos'])
-    
+    ...mapState(['pedidos']),
+   
 }
 }
 </script>

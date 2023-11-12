@@ -36,3 +36,4 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
 
 Route::get('/pedidos/{pedido_id}/produtos', [PedidoProdutoController::class, 'produtos']);
 Route::get('/produtopedido/{id}', [PedidoController::class, 'show']);
+Route::delete('/produtopedido/{pedido_id}/{produto_id}', [PedidoController::class, 'destroy']);

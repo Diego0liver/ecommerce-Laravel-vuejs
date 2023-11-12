@@ -1,28 +1,28 @@
 <template>
 <Cabecalho />
-<h1>Registro</h1>
-<form @submit.stop.prevent="registro">
+<h1 class="titulo">Cadastra</h1>
+<form class="formCadastro" @submit.stop.prevent="registro">
 <label>Nome</label>
-<input v-model="name" type="text" />
+<input class="input" v-model="name" type="text" />
 
 <label>email</label>
-<input v-model="email" type="email" /><br/>
+<input class="input" v-model="email" type="email" />
 
 <label>Cidade</label>
-<input v-model="cidade" type="text" />
+<input class="input" v-model="cidade" type="text" />
 
 <label>Estado</label>
-<input v-model="estado" type="text" /><br/>
+<input class="input" v-model="estado" type="text" />
 
 <label>Rua/Numero</label>
-<input v-model="rua" type="text" />
+<input class="input" v-model="rua" type="text" />
 
 <label>Telefone</label>
-<input v-model="telefone" type="text" /><br/>
+<input class="input" v-model="telefone" type="text" />
 
 <label>Senha</label>
-<input  v-model="password" type="password" /><br/>
-<button type="submit">Cadastra</button>
+<input class="input"  v-model="password" type="password" />
+<button class="btn" type="submit">Cadastra</button>
 </form>
 
 </template>
@@ -67,4 +67,41 @@ export default{
 </script>
 
 <style scoped>
+.titulo{
+    text-align: center;
+}
+.formCadastro{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.btn{
+    margin-top: 9px;
+    background-color: #ff7f00;
+    color: #fff;
+    padding: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+}
+.btn:hover{
+    box-shadow: 0 0 1em #ff7f00;
+}
+.input{
+    border: none;
+    border-bottom: 2px solid #ff7f00;
+    padding: 5px;
+    border-radius: 3px;
+    background-color: rgb(236, 236, 236);
+    width: 350px;
+    }
+    .input:focus{
+    box-shadow: 0 0 1em #ff7f00;
+    border: 1px solid #ff7f00;
+    outline: 0;
+}
 </style>

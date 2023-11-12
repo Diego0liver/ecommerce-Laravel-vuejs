@@ -8,7 +8,7 @@
     <input class="input" v-model="password" type="password" name="password"/>
     <button class="btnLog" type="submit">Logar</button>
     <RouterLink to="/reg">
-        <p>Cadastro</p>
+        <p class="btnLog">Cadastro</p>
     </RouterLink>
     </form>
 </template>

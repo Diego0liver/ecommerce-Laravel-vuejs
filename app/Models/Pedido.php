@@ -13,6 +13,7 @@ class Pedido extends Model
         'quantidade',
         'total',
         'status',
+        'produtos',
         'user_id'
     ];
 

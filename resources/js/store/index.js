@@ -30,8 +30,7 @@ export default createStore({
           try{
             if(idUsers){
               const res = await API.get(`/produtopedido/${idUsers}`)
-              commit('SET_PEDIDO', res.data.Produtos)
-              console.log(res.data.Produtos.length)}
+              commit('SET_PEDIDO', res.data.Produtos)}
           }catch(err){
                   console.log(err)
           }}},

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('quantidade')->nullable(); 
             $table->decimal('total')->nullable();
             $table->string('status')->nullable();
+            $table->string('produtos')->nullable();
             $table->foreignId('user_id')->nullable();
             $table->foreign('user_id')->on('users')->references('id');
             $table->timestamps();

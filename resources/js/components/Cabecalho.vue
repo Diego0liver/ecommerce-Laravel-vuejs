@@ -77,7 +77,17 @@ computed:{
    .busca{
     height: 20px;
     width: 200px;
+    border: none;
+    border-bottom: 2px solid #ff7f00;
+    padding: 5px;
+    border-radius: 3px;
+    background-color: rgb(236, 236, 236);
    }
+    .busca:focus{
+    box-shadow: 0 0 1em #ffffff;
+    border: 1px solid #ffffff;
+    outline: 0;
+}
    .carrinho{
     background-color: white;
     border-radius: 100%;
