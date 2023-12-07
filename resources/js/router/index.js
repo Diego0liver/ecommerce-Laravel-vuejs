@@ -58,6 +58,18 @@ const router = createRouter({
       name: 'registro',
       component: ()=> import ('../view/Registro.vue'),
       props: true
+    },
+    {
+      path: '/admin',
+      name: 'admin',
+      component: ()=> import ('../view/AdminLogin.vue'),
+      props: true
+    },
+    {
+      path: '/painel',
+      name: 'painel',
+      component: ()=> import ('../view/admin/HomeAdmin.vue'),
+      // beforeEnter: auth.authAdmin
     }
   ]
 })
